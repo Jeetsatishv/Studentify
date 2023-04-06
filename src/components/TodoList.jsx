@@ -1,7 +1,7 @@
 import React from 'react'
 // import { ImCheckmark2 } from 'react-icons/im'
 // import { BsPencilSquare } from 'react-icons/bs'
-import { GoTrashcan } from 'react-icons/go'
+// import { GoTrashcan } from 'react-icons/go'
 
 
 
@@ -63,7 +63,8 @@ export const TodoList = ({ todos, setToDos, setEditToDo }) => {
                     <button 
                         onClick={() => handleDelete(todo)}
                         className='hover:text-gray-800'>
-                        <GoTrashcan size={25}/>
+                        Delete
+                        {/* <GoTrashcan size={25}/> */}
                     </button>
                 </div>
             </li>

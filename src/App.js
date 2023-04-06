@@ -18,7 +18,6 @@ function App() {
           <h1>WEATHER APP</h1>
         </div>
       </div>
-
     </div>
   );
 }
