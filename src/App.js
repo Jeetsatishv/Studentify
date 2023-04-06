@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import WebPlayback from './WebPlayback'
-import Login from './Login'
+import React from 'react';
+import {Spotify} from './components/Spotify'
+import {Card} from './components/Card'
 import './App.css';
 
 function App() {
-
-  const [token, setToken] = useState('');
-
-  useEffect(() => {
-
-    async function getToken() {
-      const response = await fetch('/auth/token');
-      const json = await response.json();
-      setToken(json.access_token);
-    }
-
-    getToken();
-
-  }, []);
-
   return (
-    <>
-        { (token === '') ? <Login/> : <WebPlayback token={token} /> }
-    </>
+    <div className="webapp">
+      <div className="todo-container">
+        <Card />
+      </div>
+
+      <div className="other-container">
+        <div className='spotify-container'>
+          <Spotify />
+        </div>
+        <div className='weather-container'>
+          <h1>WEATHER APP</h1>
+        </div>
+      </div>
+
+    </div>
   );
 }
 
