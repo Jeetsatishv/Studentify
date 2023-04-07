@@ -1,6 +1,7 @@
 import React from 'react';
 import {Spotify} from './components/Spotify'
 import {Card} from './components/Card'
+import {Weather} from './components/Weather'
 import './App.css';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
           <Spotify />
         </div>
         <div className='weather-container'>
-          <h1>WEATHER APP</h1>
+          <Weather />
         </div>
       </div>
     </div>
