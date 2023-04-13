@@ -1,12 +1,15 @@
 import React from 'react';
 import {Spotify} from './components/Spotify'
 import {Card} from './components/Card'
-import {Weather} from './components/Weather'
 import './App.css';
 
 function App() {
   return (
+    
     <div className="webapp">
+      <div className = "Welcome Title">
+        <h1>Welcome username</h1>
+      </div>
       <div className="todo-container">
         <Card />
       </div>
@@ -16,7 +19,7 @@ function App() {
           <Spotify />
         </div>
         <div className='weather-container'>
-          <Weather />
+          <h1>WEATHER APP</h1>
         </div>
       </div>
     </div>
