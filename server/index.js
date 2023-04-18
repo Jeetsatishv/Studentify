@@ -1,17 +1,20 @@
-const express = require('express')
+const express = require('express');
 const request = require('request');
 const dotenv = require('dotenv');
 
-const port = 6001
+const port = 8888;
 
-global.access_token = ''
+global.access_token = '';
 
-dotenv.config()
+dotenv.config();
 
-var spotify_client_id = process.env.SPOTIFY_CLIENT_ID
-var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET
+var spotify_client_id = process.env.SPOTIFY_CLIENT_ID;
+var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+console.log('Client ID:', spotify_client_id);
+console.log('Client Secret:', spotify_client_secret);
 
-var spotify_redirect_uri = 'http://localhost:3000/auth/callback'
+
+var spotify_redirect_uri = 'http://localhost:3000/auth/callback';
 
 var generateRandomString = function (length) {
   var text = '';
@@ -26,23 +29,22 @@ var generateRandomString = function (length) {
 var app = express();
 
 app.get('/auth/login', (req, res) => {
-
-  var scope = "streaming user-read-email user-read-private user-library-read user-library-modify user-read-playback-state "
+  var scope = 'streaming user-read-email user-read-private user-library-read user-library-modify user-read-playback-state ';
   var state = generateRandomString(16);
 
   var auth_query_parameters = new URLSearchParams({
-    response_type: "code",
+    response_type: 'code',
     client_id: spotify_client_id,
     scope: scope,
     redirect_uri: spotify_redirect_uri,
-    state: state
-  })
+    state: state,
+    
+  });
 
   res.redirect('https://accounts.spotify.com/authorize/?' + auth_query_parameters.toString());
-})
+});
 
 app.get('/auth/callback', (req, res) => {
-
   var code = req.query.code;
 
   var authOptions = {
@@ -50,28 +52,27 @@ app.get('/auth/callback', (req, res) => {
     form: {
       code: code,
       redirect_uri: spotify_redirect_uri,
-      grant_type: 'authorization_code'
+      grant_type: 'authorization_code',
     },
     headers: {
-      'Authorization': 'Basic ' + (Buffer.from(spotify_client_id + ':' + spotify_client_secret).toString('base64')),
-      'Content-Type' : 'application/x-www-form-urlencoded'
+      Authorization: 'Basic ' + (Buffer.from(spotify_client_id + ':' + spotify_client_secret).toString('base64')),
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    json: true
+    json: true,
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       access_token = body.access_token;
-      res.redirect('/')
+      res.redirect('/');
     }
   });
-
-})
+});
 
 app.get('/auth/token', (req, res) => {
-  res.json({ access_token: access_token})
-})
+  res.json({ access_token: access_token });
+});
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`)
-})
+  console.log(`Listening at http://localhost:${port}`);
+});
