@@ -132,9 +132,13 @@ body {
 
 img { background: transparent; }
 
-/* .spotify-container {
-  flo
-} */
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 /******************** TODO LIST ********************/
@@ -147,6 +151,18 @@ img { background: transparent; }
   align-items: center;
   background-color: rgb(140, 168, 173);
 }
+
+.todo-text {
+  width:  15em;
+  height: auto;
+  overflow-wrap: break-word;
+  border-radius: 6px;
+  background-color: rgba(10, 10, 10, 0.266);
+}
+
+/* .todo-completed {
+  background-color : red;
+} */
 
 /******************** WEATHER APP ********************/
 .weather-container {

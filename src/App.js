@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Spotify } from './components/Spotify';
-import { Card } from './components/Card';
 import { Weather } from './components/Weather';
+import { Form } from "./components/Form";
 import './App.css';
 
 function App() {
@@ -36,21 +36,22 @@ function App() {
     setUserName(data.display_name);
   }
 
-  if (!userName) {
-    return (
-      <div className="webapp">
-        <a href="/auth/login">Log in with Spotify</a>
-      </div>
-    );
-  }
+  // if (!userName) {
+  //   return (
+  //     <div className="login-container">
+  //       <a className="btn-spotify" href="/auth/login">Log in with Spotify</a>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="webapp">
       <div className="Welcome Title">
         {userName && <h1>Welcome, {userName}!</h1>}
       </div>
-      <div className="todo-container">
-        <Card />
+
+      <div className='todo-container'>
+        <Form />
       </div>
 
       <div className="other-container">
