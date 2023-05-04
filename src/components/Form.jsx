@@ -12,8 +12,6 @@ import {
 } from 'firebase/firestore';
 
 export const Form = () => {
-   // MATTHEW'S WORK
-
    const [todos, setTodos] = useState([]);
    const [input, setInput] = useState('');
  
