@@ -1,17 +1,10 @@
-# dependencies
-/node_modules
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 /firebase.js
+node_modules/
+.cache/
+dist/
+.DS_Store
+coverage/
+.vscode/
+
+.env
