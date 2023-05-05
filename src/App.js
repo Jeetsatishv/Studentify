@@ -36,13 +36,13 @@ function App() {
     setUserName(data.display_name);
   }
 
-  // if (!userName) {
-  //   return (
-  //     <div className="login-container">
-  //       <a className="btn-spotify" href="/auth/login">Log in with Spotify</a>
-  //     </div>
-  //   );
-  // }
+  if (!userName) {
+    return (
+      <div className="login-container">
+        <a className="btn-spotify" href="/auth/login">Log in with Spotify</a>
+      </div>
+    );
+  }
 
   return (
     <div className="webapp">
